@@ -1,52 +1,17 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/types.h>
-#include <unistd.h>
-#include <math.h>
+#include "intcode.h"
 
-#define RAM_SIZE 80000
-#define MAX_PARAMS 3
-#define INFILE   "program.ic"
-#define CUSTOM_OPS
-//#define PROTECTED_MEMORY
-
-char ascii=0;
-//registers
 int inc =0; //instructions executed counter
 char halt = 0;
 int offset = 0;
-int reg1, reg2, reg3;
 
-void loadram( FILE * fp, long ram[]);
-int  getinput(void);
-void intoutput(long output);
-void runcompute(long  ram[], int ip);
-
-int main (int argc, char *argv[])
-{
-    if((argc == 2)&&(!strcmp(argv[1],"a")))
-        ascii=1;
-    FILE * fp;
-    if((fp = fopen (INFILE, "r")) == NULL)
-    {
-        printf("Error opening file %s\n", INFILE);
-        return 1;
-    }
-    long  ram[RAM_SIZE];
-    loadram(fp, ram);
-    runcompute(ram, 0);
-    return(0);
-}
-
-int getinput(void)
+int defaultinput(void)
 {
     int in = 1;
     scanf("%d", &in);
     return in;
 }
 
-void intoutput(long output)
+void defaultoutput(long output, char ascii)
 {
     if (ascii)
         printf("%c\n", output);
@@ -106,7 +71,7 @@ void runcompute( long ram[],  int ip)
                 inp++;
                 break;
             case  4: // write
-                intoutput(ram[p[1]]);
+                sendoutput(ram[p[1]]);
                 ip+=2;
                 break;
             case  5: //jnz
