@@ -1,7 +1,7 @@
 #include "intcode.h"
 
 int inc =0; //instructions executed counter
-char halt = 0;
+char halt;
 int offset = 0;
 
 int defaultinput(void)
@@ -41,6 +41,8 @@ void runcompute( long ram[],  int ip)
     long p[MAX_PARAMS +1]  = {0};
     int x =1;
     long param, temp;
+    halt=0;
+    offset=0;
     while(halt !=1)
     {
         inc +=1;

@@ -7,7 +7,7 @@
 
 #define RAM_SIZE 80000
 #define MAX_PARAMS 3
-#define CUSTOM_OPS
+//#define CUSTOM_OPS
 //#define PROTECTED_MEMORY
 
 void loadram( FILE * fp, long ram[]);
