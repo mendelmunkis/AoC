@@ -3,7 +3,7 @@
 #include <stddef.h>
 #include <string.h>
 
-void runcompute(FILE * fp, int grid[40000][40000][2]);
+void genlines(FILE * fp, int grid[40000][40000][2]);
 
 int maxx=0, maxy=0, minx=39999, miny=39999;
 
@@ -17,10 +17,11 @@ int main (int argc, char * argv[])
     if((argc == 3) &&(argv[2][0] == '2'))
         part++;
     static int grid[40000][40000][2] ={0};
-    static int ram[305][2]={0};
-    runcompute(fp, grid);
+    genlines(fp, grid);
     maxx++;
     maxy++;
+    if((maxx>40000)||(maxy>40000))
+        printf("Error: Lines are bigger then grid.\n");
     if(part == 1)
         for(x=minx;x<maxx;x++)
             for(y=miny;y<maxy;y++)
@@ -36,11 +37,11 @@ int main (int argc, char * argv[])
     if(ans < 999999)
         printf("%d\n", ans);
     else
-        printf("Error: Answer ot of range.\n");
+        printf("Error: Answer out of range.\n");
     return(0);
 }
 
-void runcompute(FILE *fp, int grid[40000][40000][2])
+void genlines(FILE *fp, int grid[40000][40000][2])
 {
     char buf[7], line=1;
     int x =10000, y=10000, length=0, steps=1, size;
