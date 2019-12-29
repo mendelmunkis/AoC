@@ -1,4 +1,5 @@
 #include "intcode.h"
+#include "time.h"
 
 #define INFILE   "inputs/input2"
 
