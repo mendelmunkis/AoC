@@ -5,3 +5,6 @@ Day 4  - Secure Container                     password.c
 Day 5  - Sunny with a Chance of Asteroids     interpreter.c* -runs on a standard IVM
 Day 6  - Universal Orbit Map                  orbit.c
 Day 7  - Amplification Circut                 thrusters.c
+Day 8  - Space Image Format                   pic.c
+
+*Requires intcode.h and intcode.c
