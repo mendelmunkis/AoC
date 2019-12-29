@@ -1,4 +1,5 @@
 #include "intcode.h"
+//#include "time.h"
 
 #define INFILE   "program.ic"
 
@@ -6,6 +7,7 @@ char ascii=0;
 
 int main (int argc, char *argv[])
 {
+//    float startTime = (float)clock()/CLOCKS_PER_SEC;
     if((argc == 2)&&(!strcmp(argv[1],"a")))
         ascii=1;
     FILE * fp;
@@ -16,7 +18,8 @@ int main (int argc, char *argv[])
     }
     long  ram[RAM_SIZE];
     loadram(fp, ram);
-    runcompute(ram, 0);
+    runcompute(ram, NULL);
+//    printf("%f\n", (float)clock()/CLOCKS_PER_SEC - startTime);
     return(0);
 }
 

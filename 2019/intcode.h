@@ -15,5 +15,6 @@ int  defaultinput(void);
 int  getinput(void);
 void defaultoutput(long output, char ascii);
 void sendoutput(long output);
-void runcompute(long  ram[], int ip);
+void runcompute(long  ram[], int *ipp);
 
+char halt;
