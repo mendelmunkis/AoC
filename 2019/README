@@ -4,7 +4,9 @@ Day 3  - Crossed Wires                        distance.c
 Day 4  - Secure Container                     password.c
 Day 5  - Sunny with a Chance of Asteroids     interpreter.c* -runs on a standard IVM
 Day 6  - Universal Orbit Map                  orbit.c
-Day 7  - Amplification Circut                 thrusters.c
+Day 7  - Amplification Circut                 thrusters.c*
 Day 8  - Space Image Format                   pic.c
+Day 9  - Sensor Boost                         interpreter.c* -runs on a standard IVM
+Day 10 - Monitoring Station                   asteroids.c - field size defined at top
 
 *Requires intcode.h and intcode.c
