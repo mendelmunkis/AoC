@@ -8,5 +8,6 @@ Day 7  - Amplification Circut                 thrusters.c*
 Day 8  - Space Image Format                   pic.c
 Day 9  - Sensor Boost                         interpreter.c* -runs on a standard IVM
 Day 10 - Monitoring Station                   asteroids.c - field size defined at top
+Day 11 - Space Police                         robot.c*
 
 *Requires intcode.h and intcode.c
