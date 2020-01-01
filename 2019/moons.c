@@ -130,26 +130,7 @@ void *vup(void *in)
         }
         axis+=v;
     }
-    a=__builtin_ia32_pshufd(axis, 147);
-    for(int y =0;y<3;y++)
-    {
-        v+=-(axis<a);
-        v+=axis>a;
-        a=__builtin_ia32_pshufd(a, 147);
-    }
-    axis+=v;
-    x++;
-    for(;((v[0]|v[1]|v[2]|v[3])!=0);x++)
-    {
-        a=__builtin_ia32_pshufd(axis, 147);
-        for(int y =0;y<3;y++)
-        {
-            v+=-(axis<a);
-            v+=axis>a;
-            a=__builtin_ia32_pshufd(a, 147);
-        }
-        axis+=v;
-    }
+    x*=2;
     period[z]=x;
     z++;
     return NULL;
@@ -161,8 +142,8 @@ long long bgcd ( long u, long v) // function copied from wikipedia
     unsigned long shift = 0;
 
     /* GCD(0,v) == v; GCD(u,0) == u, GCD(0,0) == 0 */
-    if (u == 0) return v;
-    if (v == 0) return u;
+//    if (u == 0) return v;
+//    if (v == 0) return u;
  
     /* Let shift := lg K, where K is the greatest power of 2
         dividing both u and v. */
