@@ -3,6 +3,7 @@
 #include <string.h>
 #include <math.h>
 #include <pthread.h>
+#include <inttypes.h>
 
 #define vabs(x) __builtin_ia32_pabsd128(x)
 #define THREADED
@@ -11,7 +12,7 @@ typedef int vec4i __attribute__((vector_size(4*sizeof(int))));
 long period[3]={0,0,0};
 
 void *vup(void *in);
-long long bgcd( long u, long v);
+long long bgcd( long u, long v, long w);
 
 int main (int argc, char *argv[])
 {
@@ -93,10 +94,8 @@ int main (int argc, char *argv[])
         x=period[0];
         y=period[1];
         z=period[2];
-        gcd=bgcd(x,y);
-        tot=((x*y)/gcd);
-        gcd=bgcd(tot,z);
-        tot=((tot*z)/gcd);
+        gcd=bgcd(x,y,z);
+        tot=((x*y*z)/(gcd*gcd));
     }
     printf("%lld\n",tot);
 }
@@ -119,7 +118,7 @@ void *vup(void *in)
         }
         axis+=v;
     }
-    for(;((v[0]|v[1]|v[2]|v[3])!=0);x++)
+    for(;(__uint128_t)v!=0;x++)
     {
         a=__builtin_ia32_pshufd(axis, 147);
         for(int y =0;y<3;y++)
@@ -137,26 +136,45 @@ void *vup(void *in)
 }
 
 
-long long bgcd ( long u, long v) // function copied from wikipedia
+long long bgcd ( long u, long v, long w) // function modified from wikipedia
 {
     unsigned long shift = 0;
 
-    /* GCD(0,v) == v; GCD(u,0) == u, GCD(0,0) == 0 */
-//    if (u == 0) return v;
-//    if (v == 0) return u;
- 
     /* Let shift := lg K, where K is the greatest power of 2
         dividing both u and v. */
-    while (((u | v) & 1) == 0) {
+    while (((u | v | w) & 1) == 0) {
         shift++;
         u >>= 1;
         v >>= 1;
+        w >>= 1;
     }
  
     while ((u & 1) == 0)
         u >>= 1;
  
     /* From here on, u is always odd. */
+    do {
+        /* remove all factors of 2 in v -- they are not common */
+        /*   note: v is not zero, so while will terminate */
+        while ((v & 1) == 0)
+            v >>= 1;
+        while ((w & 1) == 0)
+            w >>= 1;
+
+        /* Now u and v are both odd. Swap if necessary so u <= v,
+            then set v = v - u (which is even). For bignums, the
+             swapping is just pointer movement, and the subtraction
+              can be done in-place. */
+        if (u > v) {
+            unsigned long t = v; v = u; u = t; // Swap u and v.
+        }
+        if (u > w) {
+            unsigned long t = w; w = u; u = t; // Swap u and v.
+        }
+       
+        v -= u; // Here v >= u.
+        w -= u; // Here v >= u.
+    } while (w != 0);
     do {
         /* remove all factors of 2 in v -- they are not common */
         /*   note: v is not zero, so while will terminate */
