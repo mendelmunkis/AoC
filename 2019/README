@@ -9,6 +9,7 @@ Day 8  - Space Image Format                   pic.c
 Day 9  - Sensor Boost                         interpreter.c* -runs on a standard IVM
 Day 10 - Monitoring Station                   asteroids.c - field size defined at top
 Day 11 - Space Police                         robot.c*
-Day 12 - The N-Body Proble                    moons.c
+Day 12 - The N-Body Problem                   moons.c
+Day 13 - Care Package                         arcade.c*
 
 *Requires intcode.h and intcode.c
