@@ -4,9 +4,9 @@
 
 int myround (int a);
 
-void main (int argc, char * argv[])
+int main (int argc, char * argv[])
 {
-    long result=0;
+    int result=0;
     int part=0;
     int toround;
     char buf[16];
@@ -34,6 +34,7 @@ void main (int argc, char * argv[])
         memset(buf, 0, 16);
     }
     printf("%d\n",result);
+    return 0;
 }
 int myround (int a)
 {

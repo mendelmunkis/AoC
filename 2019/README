@@ -11,6 +11,6 @@ Day 10 - Monitoring Station                   asteroids.c - field size defined a
 Day 11 - Space Police                         robot.c*
 Day 12 - The N-Body Problem                   moons.c
 Day 13 - Care Package                         arcade.c*
-Day 13 - Space Stoichiometry                  refine.c
+Day 14 - Space Stoichiometry                  refine.c
 
 *Requires intcode.h and intcode.c

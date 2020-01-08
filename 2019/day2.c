@@ -22,7 +22,7 @@ int main (int argc, char *argv[])
         ram[1]=12;
         ram[2]=2;
         runcompute(ram, 0);
-        printf("%d\n", ram[0]);
+        printf("%ld\n", ram[0]);
     }
     else
     {
