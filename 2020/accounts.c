@@ -11,8 +11,9 @@ int main (int argc, char * argv[])
     int part=1;
     char buf[16];
     int input[200];
-    int x=0, z=0;
+    int x=0,temp;
     int y=199;
+    int *z=&x, *p=&temp;
     FILE * fp;
     if(argc > 1)
         part=atoi(argv[1]);
@@ -41,16 +42,17 @@ int main (int argc, char * argv[])
     }
     else
     {
-        while(input[x]+input[y]+input[z]!=2020)
-            if(input[x]+input[y]+input[z] > 2020)
-            {
-                y--;
-                z=x+1;
-            }else if(z=y)
-                z=++x+1;
+        while(1)
+        {
+            temp = 2020-(input[x]+input[y]);
+            if ((z=bsearch(p,input+x,y-x,sizeof(int),comp))!=NULL)
+                break;
+            else if(input[x]+(2*input[y]) <= 2020)
+                x++;
             else
-                z++;
-        result=input[x]*input[y]*input[z];
+                y--;
+        }
+        result=input[x]*input[y]* *z;
     }
     printf("%d\n",result);
     return 0;
