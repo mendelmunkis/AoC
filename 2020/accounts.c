@@ -11,6 +11,8 @@ int main (int argc, char * argv[])
     int part=1;
     char buf[16];
     int input[200];
+    int x=0, z=0;
+    int y=199;
     FILE * fp;
     if(argc > 1)
         part=atoi(argv[1]);
@@ -21,17 +23,15 @@ int main (int argc, char * argv[])
         printf("error opening file %s\n", filename);
         return 1;
     }
-    int x=0;
     while(fgets(buf, 16, fp) != NULL)
     {
         input[x]=atoi(buf);
         x++;
     }
+    qsort(input,200,sizeof(int),comp);
+    x=0;
     if (part==1)
     {
-        qsort(input,200,sizeof(int),comp);
-        int y=199;
-        x=0;
         while(input[x]+input[y]!=2020)
             if(input[x]+input[y] > 2020)
                 y--;
@@ -40,14 +40,18 @@ int main (int argc, char * argv[])
        result=input[x]*input[y];
     }
     else
-        for(int x=0;x<200;x++)
-            for(int y=x;y<200;y++)
-                for(int z=y;z<200;z++)
-                    if(input[x]+input[y]+input[z]==2020)
-                    {
-                        result=input[x]*input[y]*input[z];
-                        x=y=z=199;
-                    }
+    {
+        while(input[x]+input[y]+input[z]!=2020)
+            if(input[x]+input[y]+input[z] > 2020)
+            {
+                y--;
+                z=x+1;
+            }else if(z=y)
+                z=++x+1;
+            else
+                z++;
+        result=input[x]*input[y]*input[z];
+    }
     printf("%d\n",result);
     return 0;
 }
