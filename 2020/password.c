@@ -9,7 +9,7 @@ int main (int argc, char * argv[])
     int result=0;
     int part=1;
     char buf[40];
-    char *p, *password;
+    char *p;
     char policy;
     int min,max,count;
     FILE * fp;
@@ -30,7 +30,6 @@ int main (int argc, char * argv[])
         p++;
         policy=*p;
         p+=2;
-        password=p;
         if(part ==1)
         {
             while(*p!='\0')
