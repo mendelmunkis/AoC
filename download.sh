@@ -6,7 +6,7 @@ while getopts ":y:d:" options; do
     y)
       YEAR=${OPTARG}                           # set $NAME to specified value.
       ;;
-    d
+    d)
       DAY=${OPTARG}                          # Set $TIMES to specified value.
       ;;
     :)                                         # If expected argument omitted:
