@@ -3,3 +3,4 @@ Day 2  - Password Philosophy                  password.c
 Day 3  - Toboggan Trajectory                  slope.c
 Day 4  - Passport Processing                  passport.c
 Day 5  - Binary Boarding                      boarding.c -Requires libmath
+Day 6  - Custom Customs                       customs.c
