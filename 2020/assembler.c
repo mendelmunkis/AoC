@@ -12,11 +12,15 @@ int main (int argc, char * argv[])
         printf("error opening file %s\n", argv[1]);
         return 1;
     }
-    if((outfp = fopen (argv[2], "w+"))==NULL)
+    if(argc>=3)
     {
-        printf("error opening file %s\n", argv[2]);
-        return 1;
-    }
+        if((outfp = fopen (argv[2], "w+"))==NULL)
+        {
+            printf("error opening file %s\n", argv[2]);
+            return 1;
+        }
+    }else
+        outfp = stdout;
 
     int location[MAX_LEN][3]={0};
     char buf[16];
