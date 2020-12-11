@@ -9,3 +9,8 @@ Day 8  - Handheld Halting                     handheld.c
 Day 9  - Encoding Error                       encoding.c
 Day 10 - Adaptor Array                        charger.c
 Day 11 - Seating System                       seats.c
+
+Also included,
+
+assembler.c  A day 8 to intcode compiler.
+usage assembler in.asm [out.ic]
