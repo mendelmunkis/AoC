@@ -12,8 +12,8 @@ int main (int argc, char * argv[])
     unsigned long long result=0;
     int part=1;
     char buf[200];
-    unsigned long long bus[15]={0};
-    unsigned long long mod[15];
+    long long bus[15]={0};
+    long long mod[15];
     char *busp;
     long origin;
     unsigned long long mult=1,sum;
@@ -45,7 +45,10 @@ int main (int argc, char * argv[])
             if(bus[i])
             {
                 mult*=bus[i];
-                mod[i]=bus[i]-y;
+                if(bus[i]>y)
+                    mod[i]=bus[i]-y;
+                else
+                    mod[i]=bus[i]-(y%bus[i]);
             }
     }
     if(part==1)
@@ -68,7 +71,7 @@ int main (int argc, char * argv[])
         {
             sum=inverse(mult/bus[i],bus[i]);
             mpz_import(a, 1, -1, sizeof sum, 0, 0, &sum);
-            mpz_set_ui(b,mod[i]);
+            mpz_import(b, 1, -1, sizeof mod[i], 0, 0, mod+i);
             mpz_set_ui(c,(mult/bus[i]));
             mpz_set_ui(tot,0);
             mpz_mul(tot,a,b);
