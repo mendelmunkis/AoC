@@ -90,7 +90,6 @@ int main (int argc, char * argv[])
     {
         for(int l = 0;l<FIELDS;l++)
         {
-            c=0;
             for(int i=0;i<FIELDS;i++)
             {
                 flag=0;
@@ -105,40 +104,30 @@ int main (int argc, char * argv[])
                 }
                 if(!flag)
                 {
-                    field[l][c]=i;
-                    c++;
+                    field[l][i]=1;
                 }
             }
         }
-        for(int i=0;i<FIELDS;i++)
+        flag=0;
+        while(flag<FIELDS)
         {
-            for(int j=0;j<FIELDS;j++)
-                if(field[j][1]==0)
+            for(int i=0;i<FIELDS;i++)
+            {
+                value=0;
+                for(int j=0;j<FIELDS;j++)
+                    value+=field[j][i];
+                if(value==1)
                 {
-                    value=field[j][0];
-                    field[j][1]=25;
-                    field[j][2]=25;
-                    final[j]=value;
-                    for(k=0;k<FIELDS;k++)
-                    {
-                        for(int l=0;l<FIELDS;l++)
-                            if(field[k][l]==value)
-                            {
-                                if(l!=FIELDS-1)
-                                    field[k][l]=field[k][l+1];
-                                else
-                                    field[k][l]=0;
-                                while(field[k][l])
-                                {
-                                    l++;
-                                    if(l!=FIELDS-1)
-                                        field[k][l]=field[k][l+1];
-                                    else
-                                        field[k][l]=0;
-                                }
-                            }
-                    }
+                    for(int j=0;j<FIELDS;j++)
+                        if(field[j][i])
+                        {
+                            final[j]=i;
+                            flag++;
+                            memset(field[j],0,FIELDS*sizeof(int));
+                            break;
+                        }
                 }
+            }
         }
         result=1;
         for(int i=0;i<6;i++)
