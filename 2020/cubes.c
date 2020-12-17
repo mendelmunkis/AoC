@@ -2,17 +2,13 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define SIZE 30
+#define SIZE 23
 
 void iterate(void);
-//int iterate2(char room[94][94]);
 
-char cube[30][30][30][30]={0};
-char out[30][30][30][30]={0};
+char cube[23][23][23][23]={0};
+char out[23][23][23][23]={0};
 int part=1;
-
-//#pragma GCC push_options
-//#pragma GCC optimize (0)
 
 int main (int argc, char * argv[])
 {
@@ -34,15 +30,15 @@ int main (int argc, char * argv[])
     {
         for(int j=0;buf[j]!='\0';j++)
             if(buf[j]=='#')
-                cube[i+12][j+12][15][15]=1;
+                cube[i+7][j+7][11][11]=1;
         i++;
     }
     for(int i=0;i<6;i++)
         iterate();
     for(int r=1;r<SIZE;r++)
         for(int c=1;c<SIZE;c++)
-            for(int z=0;z<SIZE;z++)
-                for(int w=0;w<SIZE;w++)
+            for(int z=1;z<SIZE;z++)
+                for(int w=1;w<SIZE;w++)
                     if(cube[r][c][z][w])
                         result++;
     printf("%d\n",result);
@@ -55,14 +51,14 @@ void iterate(void)
     int x,y;
     if(part==1)
     {
-        x=15;
-        y=16;
+        x=11;
+        y=12;
     }else
     {
         x=1;
         y=SIZE-1;
     }
-    memset(out,0,sizeof(char)*810000);
+    memset(out,0,sizeof(char)*279841);
     for(int r=1;r<SIZE-1;r++)
         for(int c=1;c<SIZE-1;c++)
             for(int z=1;z<SIZE-1;z++)
@@ -84,5 +80,5 @@ void iterate(void)
                         if(temp==3)
                             out[r][c][z][w]=1;
                 }
-    memcpy(cube,out,(sizeof(char)*810000));
+    memcpy(cube,out,(sizeof(char)*279841));
 }
