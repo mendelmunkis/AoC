@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../bench.h"
 
 #define SIZE 23
 
@@ -33,17 +32,16 @@ int main (int argc, char * argv[])
             if(buf[j]=='#')
                 cube[i+7][j+7][11][11]=1;
         i++;
-    }START
+    }
     for(int i=5;i>=0;i--)
-        iterate(i);END
+        iterate(i);
     for(int r=1;r<SIZE;r++)
         for(int c=1;c<SIZE;c++)
             for(int z=1;z<SIZE;z++)
                 for(int w=1;w<SIZE;w++)
                     if(cube[r][c][z][w])
                         result++;
-//    printf("%d\n",result);
-    printf("%f\n",TIME);
+    printf("%d\n",result);
     return 0;
 }
 
