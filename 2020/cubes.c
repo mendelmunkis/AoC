@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "../bench.h"
 
 #define SIZE 23
 
-void iterate(void);
+void iterate(int distance);
 
 char cube[23][23][23][23]={0};
 char out[23][23][23][23]={0};
@@ -32,20 +33,21 @@ int main (int argc, char * argv[])
             if(buf[j]=='#')
                 cube[i+7][j+7][11][11]=1;
         i++;
-    }
-    for(int i=0;i<6;i++)
-        iterate();
+    }START
+    for(int i=5;i>=0;i--)
+        iterate(i);END
     for(int r=1;r<SIZE;r++)
         for(int c=1;c<SIZE;c++)
             for(int z=1;z<SIZE;z++)
                 for(int w=1;w<SIZE;w++)
                     if(cube[r][c][z][w])
                         result++;
-    printf("%d\n",result);
+//    printf("%d\n",result);
+    printf("%f\n",TIME);
     return 0;
 }
 
-void iterate(void)
+void iterate(int distance)
 {
     int temp;
     int x,y;
@@ -55,13 +57,13 @@ void iterate(void)
         y=12;
     }else
     {
-        x=1;
+        x=1+distance;
         y=SIZE-1;
     }
     memset(out,0,sizeof(char)*279841);
-    for(int r=1;r<SIZE-1;r++)
-        for(int c=1;c<SIZE-1;c++)
-            for(int z=1;z<SIZE-1;z++)
+    for(int r=1+distance;r<SIZE-(distance+1);r++)
+        for(int c=1+distance;c<SIZE-(distance+1);c++)
+            for(int z=1+distance;z<SIZE-1;z++)
                 for(int w=x;w<y;w++)
                 {
                     temp=0;
