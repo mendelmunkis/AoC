@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 long calc(int mult);
 
@@ -70,6 +71,10 @@ long calc(int mult)
                   total+=atoi(bufp);
               else if(op==2)
                   total*=atoi(bufp);
+              while(isdigit(*bufp))
+                  bufp++;
+              if(*bufp!=' ')
+                  bufp--;
               break;
           case '+':
               op=1;
