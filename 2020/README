@@ -18,6 +18,9 @@ Day 17 - Conway Cubes                         cubes.c
 Day 18 - Operation Order                      math.c
 Day 19 - Monster Messages                     regex.c
 
+
+Day 22 - Crab Combat                          cards.c
+
 Also included,
 
 assembler.c  A day 8 to intcode compiler.
