@@ -14,7 +14,6 @@ int main (int argc, char * argv[])
     FILE * fp;
     int i=0,player=0;
     char cards[2][50];
-    char one, two;
     int onecards, twocards,total;
     if(argc > 1)
         part=atoi(argv[1]);
@@ -56,7 +55,6 @@ int hand(char *state1, char *state2, int onecard, int twocard, int depth)
     int winner=1;
     int one,two,i,j=0;
     char cards[2][onecards+twocards];
-    char state[2][onecards+twocards];
     memcpy(cards[0],state1,onecards*sizeof(char));
     memcpy(cards[1],state2,twocards*sizeof(char));
     while(onecards && twocards)
@@ -66,10 +64,8 @@ int hand(char *state1, char *state2, int onecard, int twocard, int depth)
         two=cards[1][0];
         twocards--;
         onecards--;
-        for(i=0;i<onecards;i++)
-            cards[0][i]=cards[0][i+1];
-        for(i=0;i<twocards;i++)
-            cards[1][i]=cards[1][i+1];
+        memmove(cards[0],&cards[0][1],onecards*sizeof(char));
+        memmove(cards[1],&cards[1][1],twocards*sizeof(char));
         if(part==1)
         {
             if(one<two)
