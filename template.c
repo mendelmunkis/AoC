@@ -6,7 +6,7 @@
 int main (int argc, char * argv[])
 {
     char *filename = "input";
-    int result=0;
+    long result=0;
     int part=1;
     char buf[16];
     FILE * fp;
@@ -22,6 +22,6 @@ int main (int argc, char * argv[])
     while(fgets(buf, 16, fp) != NULL)
     {
     }
-    printf("%d\n",result);
+    printf("%ld\n",result);
     return 0;
 }
