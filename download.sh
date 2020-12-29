@@ -1,6 +1,19 @@
 #!/bin/sh
 YEAR=`date +%Y`
 DAY=`date +%-d`
+COOKIE=session_cookie
+OUTPUT=$YEAR/inputs
+
+if [ ${PWD##*/} -gt 2000 ]
+then
+    if [ ${PWD##*/} -lt 3000 ]
+    then
+        YEAR=${PWD##*/}
+        COOKIE=../session_cookie
+        OUTPUT=inputs
+    fi
+fi
+
 while getopts ":y:d:" options; do
  case "${options}" in
     y)
@@ -20,5 +33,5 @@ while getopts ":y:d:" options; do
 done
 
 
-wget "https://adventofcode.com/$YEAR/day/$DAY/input" --header "Cookie: session=$(cat session_cookie)"  -O $YEAR/inputs/input$DAY
-cp -f $YEAR/inputs/input$DAY $YEAR/input
+wget "https://adventofcode.com/$YEAR/day/$DAY/input" --header "Cookie: session=$(cat $COOKIE)"  -O $OUTPUT/input$DAY
+cp -f $OUTPUT/input$DAY $OUTPUT/../input
