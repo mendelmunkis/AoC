@@ -36,11 +36,10 @@ int main (int argc, char * argv[])
         for(int i=0;i<3;i++)
             if(*(cp+i)=='R')
                 col+=pow(2,(2-i));
-            sid=(8*row)+col;
-            if(part==2)
-                seats[sid]=1;
-            if(((8*row)+col)>result)
-                result=sid;
+        sid=(8*row)+col;
+        seats[sid]=1;
+        if(((8*row)+col)>result)
+            result=sid;
     }
     if(part==2)
         for(int i=0;i<1024;i++)

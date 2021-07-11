@@ -202,8 +202,8 @@ end :
                      for(i=0;i<9;i++)
                          if(!isdigit(*(field+i)))
                              goto input;
-                         if(isdigit(*(field+9)))
-                             goto input;
+                     if(isdigit(*(field+9)))
+                         goto input;
                      temp=strtol(field,NULL,10);
                      passports[x].pid=temp;
                      field+=8;
