@@ -34,7 +34,9 @@ int main (int argc, char * argv[])
     fgets(buf, 200, fp);
     busp=strtok(buf,",");
     bus[i]=strtol(busp,NULL,10);
-    mult=bus[i];
+    if(bus[i])
+        mult=bus[0];
+        mod[0]=0;
     while((busp=strtok(NULL,","))!=NULL)
     {
         y++;
