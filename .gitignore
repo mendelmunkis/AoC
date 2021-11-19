@@ -2,3 +2,6 @@
 input*
 *.ic
 *.o
+sample*
+example*
+a.out
