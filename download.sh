@@ -43,7 +43,7 @@ then
     echo $FILE
     FILE="$FILE.c"
     echo $FILE
-    cp template.c $YEAR/$FILE
-    cd $YEAR
+    cp $OUTPUT/../../template.c $OUTPUT/../$FILE
+    cd $OUTPUT/..
     nano $FILE
 fi
