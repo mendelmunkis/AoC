@@ -11,7 +11,7 @@ struct cup  cups[1000000];
 int main (int argc, char * argv[])
 {
     char *filename = "input";
-    long result=1;
+    long result=0;
     int part=1, total=100, size=9;
     char buf[16];
     char intemp[2];
@@ -80,18 +80,19 @@ int main (int argc, char * argv[])
     }
     current=cups[0].next;
     if(part==1)
-    {
         for(int i=0;i<8;i++)
         {
-            printf("%d",(current+1)-cups);
+            result*=10;
+            result+=(current+1)-cups;
             current=current->next;
         }
-        printf("\n");
-        return 0;
+    else
+    {
+        result=1;
+        result*=(current+1)-cups;
+        current=current->next;
+        result*=(current+1)-cups;
     }
-    result*=(current+1)-cups;
-    current=current->next;
-    result*=(current+1)-cups;
     printf("%ld\n",result);
     return 0;
 

@@ -41,7 +41,8 @@ int main (int argc, char * argv[])
             i++;
         }
     }
-    printf("%d\n",acc);
+    result=acc;
+    printf("%d\n",result);
     return 0;
 }
 
