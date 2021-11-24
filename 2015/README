@@ -1,12 +1,13 @@
-Day 1  - Not Quite Lisp                          floors.c
-Day 2  - I Was Told There Would Be No Math       wrapping.c
-Day 3  - Perfectly Spherical Houses in a Vacuum  houses.c
-Day 4  - The Ideal Stocking Stuffer              md5.c
-Day 5  - Doesn't He Have Intern-Elves For This   strings.c
-Day 6  - Probably a Fire Hazard                  lights.c
-Day 7  - Some Assembly Required                  gates.c
-Day 8  - Matchsticks                             length.c
-Day 9  - All in a Single Night                   path.c
-Day 10 - Elves Look, Elves Say                   say.c
-Day 11 - Corporate Policy                        password.c
-Day 12 - JSAbacusFramework.io                    account.c
+Day 1  - Not Quite Lisp                           floors.c
+Day 2  - I Was Told There Would Be No Math        wrapping.c
+Day 3  - Perfectly Spherical Houses in a Vacuum   houses.c
+Day 4  - The Ideal Stocking Stuffer               md5.c
+Day 5  - Doesn't He Have Intern-Elves For This    strings.c
+Day 6  - Probably a Fire Hazard                   lights.c
+Day 7  - Some Assembly Required                   gates.c
+Day 8  - Matchsticks                              length.c
+Day 9  - All in a Single Night                    path.c
+Day 10 - Elves Look, Elves Say                    say.c
+Day 11 - Corporate Policy                         password.c
+Day 12 - JSAbacusFramework.io                     account.c
+Day 13 - Knights of the Dinner Table              seating.c
