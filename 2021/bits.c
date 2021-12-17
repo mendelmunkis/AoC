@@ -212,7 +212,7 @@ unsigned long packet()
 
 int get(int offset, int length)
 {
-    unsigned int mask=pow(2,length)-1;
+    unsigned int mask=(1<<length)-1;
     unsigned char *p=hex+(offset/8);
     offset%=8;
     return (((p[0]<<24)+(p[1]<<16)+(p[2]<<8)+p[3])>>32-(length+offset))&mask;

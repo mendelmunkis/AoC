@@ -13,6 +13,6 @@ Day 12 - Passage Pathing                      paths.c
 Day 13 - Transparent Origami                  folds.c
 Day 14 - Extended Polymerization              chains.c
 Day 15 - Chiton                               path.c
-Day 16 - Packet Decoder                       bits              Requires -lm
+Day 16 - Packet Decoder                       bits.c
 Day 17 - Trick Shot                           trajectory.c
 
