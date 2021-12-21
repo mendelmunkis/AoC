@@ -17,4 +17,5 @@ Day 16 - Packet Decoder                       bits.c
 Day 17 - Trick Shot                           trajectory.c
 Day 18 - Snailfish                            math.c
 Day 20 - Trench Map                           life.c
+Day 21 - Dirac Dice                           dice.c
 
