@@ -16,6 +16,7 @@ Day 15 - Chiton                               path.c
 Day 16 - Packet Decoder                       bits.c
 Day 17 - Trick Shot                           trajectory.c
 Day 18 - Snailfish                            math.c
+Day 19 - Beacon Scanner                       beacons.c
 Day 20 - Trench Map                           life.c
 Day 21 - Dirac Dice                           dice.c
 Day 25 - Sea Cucumber                         cucumbers.c
