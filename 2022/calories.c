@@ -34,7 +34,7 @@ int main (int argc, char * argv[])
             }
             else if(max[0]>max[3])
             {
-                memmove(max+3,max,3*sizeof(int));
+                memmove(max+3,max,1*sizeof(int));
             }
             max[0]=0;
         }
