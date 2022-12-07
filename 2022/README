@@ -4,4 +4,5 @@ Day 3  - Rucksack Reorganization              backpack.c
 Day 4  - Camp Cleanup                         overlaps.c
 Day 5  - Supply Stacks                        restacks.c
 Day 6  - Tuning Trouble                       packeted.c
+Day 7  - No Space Left On Device              filetree.c
 
