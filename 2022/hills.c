@@ -6,7 +6,6 @@ char map[150][150];
 int dist[150][150];
 
 void check(int x, int y);
-void check2(int x, int y);
 
 int main (int argc, char * argv[])
 {
@@ -17,6 +16,7 @@ int main (int argc, char * argv[])
     int part=1;
     int x=1;
     FILE * fp;
+    memset(map,-50,sizeof(map));
     memset(dist,50000,sizeof(dist));
     if(argc > 1)
         part=atoi(argv[1]);
@@ -47,70 +47,39 @@ int main (int argc, char * argv[])
                 map[x][y+1]=buf[y]-96;
             x++;
     }
-    if(part==1)
-    {
-        dist[sx][sy]=0;
-        check(sx,sy);
-        result=dist[ex][ey];
-    }
-    else
-    {
-        dist[ex][ey]=0;
-        check2(ex,ey);
-        result=dist[sx][sy];
+    dist[ex][ey]=0;
+    check(ex,ey);
+    result=dist[sx][sy];
+    if(part==2)
         for(int x=1;x<150;x++)
             for(int y=1;y<150;y++)
                 if((map[x][y]==1) && (dist[x][y]<result))
                     result=dist[x][y];
 
-    }
     printf("%ld\n",result);
     return 0;
 }
 
 void check(int x, int y)
 {
-    if((map[x+1][y]<=map[x][y]+1)&&(dist[x+1][y]>dist[x][y]+1))
+    if((map[x+1][y]+1>=map[x][y])&&(dist[x+1][y]>dist[x][y]+1))
     {
         dist[x+1][y]=dist[x][y]+1;
         check(x+1,y);
     }
-    if((map[x-1][y]<=map[x][y]+1)&&(dist[x-1][y]>dist[x][y]+1))
+    if((map[x-1][y]+1>=map[x][y])&&(dist[x-1][y]>dist[x][y]+1))
     {
         dist[x-1][y]=dist[x][y]+1;
         check(x-1,y);
     }
-    if((map[x][y+1]<=map[x][y]+1)&&(dist[x][y+1]>dist[x][y]+1))
+    if((map[x][y+1]+1>=map[x][y])&&(dist[x][y+1]>dist[x][y]+1))
     {
         dist[x][y+1]=dist[x][y]+1;
         check(x,y+1);
     }
-    if((map[x][y-1]<=map[x][y]+1)&&(dist[x][y-1]>dist[x][y]+1))
-    {
-        dist[x][y-1]=dist[x][y]+1;
-        check(x,y-1);
-    }
-}
-void check2(int x, int y)
-{
-    if((map[x+1][y]+1>=map[x][y])&&(dist[x+1][y]>dist[x][y]+1))
-    {
-        dist[x+1][y]=dist[x][y]+1;
-        check2(x+1,y);
-    }
-    if((map[x-1][y]+1>=map[x][y])&&(dist[x-1][y]>dist[x][y]+1))
-    {
-        dist[x-1][y]=dist[x][y]+1;
-        check2(x-1,y);
-    }
-    if((map[x][y+1]+1>=map[x][y])&&(dist[x][y+1]>dist[x][y]+1))
-    {
-        dist[x][y+1]=dist[x][y]+1;
-        check2(x,y+1);
-    }
     if((map[x][y-1]+1>=map[x][y])&&(dist[x][y-1]>dist[x][y]+1))
     {
         dist[x][y-1]=dist[x][y]+1;
-        check2(x,y-1);
+        check(x,y-1);
     }
 }
