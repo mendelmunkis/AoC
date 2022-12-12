@@ -17,7 +17,6 @@ int main (int argc, char * argv[])
     int part=1;
     int x=1;
     FILE * fp;
-    memset(map,50,sizeof(map));
     memset(dist,50000,sizeof(dist));
     if(argc > 1)
         part=atoi(argv[1]);
@@ -28,6 +27,7 @@ int main (int argc, char * argv[])
         printf("error opening file %s\n", filename);
         return 1;
     }
+    memset(map,part==1?50:-50,sizeof(map));
     while(fgets(buf, 160, fp) != NULL)
     {
         for(int y=0;buf[y]!='\n';y++)
