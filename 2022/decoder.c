@@ -13,7 +13,7 @@ int main (int argc, char * argv[])
     char bufa[250], bufb[250];
     char sorted[500][250];
     int pair=0;
-    int i;
+    int i,s=1,e=1;
     FILE * fp;
     if(argc > 1)
         part=atoi(argv[1]);
@@ -41,18 +41,12 @@ int main (int argc, char * argv[])
             if(bufa[0]=='\n')
                 continue;
             strcpy(sorted[pair++],bufa);
+            if(cmp(bufa,"[[2]]")<0)
+                s++;
+            else if(cmp(bufa,"[[6]]")<0)
+                e++;
         }
-            strcpy(sorted[pair++],"[[2]]");
-            strcpy(sorted[pair++],"[[6]]");
-            qsort(sorted,pair,250,cmp);
-            for(i=0;i<pair;i++)
-                if(!strcmp(sorted[i],"[[2]]"))
-                    break;
-            result=i+1;
-            for(;i<pair;i++)
-                if(!strcmp(sorted[i],"[[6]]"))
-                    break;
-            result*=(i+1);
+        result=s*s+s*e;
     }
     printf("%ld\n",result);
     return 0;
